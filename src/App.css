@@ -78,7 +78,7 @@ a:hover {
 }
 
 .hero {
-  height: 360px;
+  height: max-content;
   margin:0;
   position: relative;
   overflow: hidden;
@@ -101,54 +101,25 @@ a:hover {
 
 .cover {
   position: absolute;
-  top: 180px;
+  top: 200px;
   left: 50px;
   z-index: 2;
   /* height:330px; */
   width: 200px;
-  margin-bottom:30px
+  margin-bottom:30px;
+  padding-bottom:10px;
 }
 
 .details {
   padding: 190px 0 0 280px;
-  .title1 {
-    color: white;
-    font-size: 44px;
-    margin-bottom: 13px;
-    position: relative;
-    span {
-      position: absolute;
-      top: 3px;
-      margin-left: 12px;
-      background: #C4AF3D;
-      border-radius: 5px;
-      color: #544C21;
-      font-size: 14px;
-      padding: 0px 4px;
-    }
-  }
+}
 
-  .title2 {
-    color: white;
-    font-size: 23px;
-    font-weight: 300;
-    margin-top:20px;
-    background-color: grey;
-    width:fit-content;
-    border-radius: 30px;
-    padding: 10px;
-    /* margin-bottom: 15px; */
-  }
-  /* .likes {
-    margin-left: 24px;
-  } */
-  .likes:before {
-    content: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/195612/icon_like.png");
-    position: relative;
-    top: 2px;
-    padding-right: 7px;
-  }
-
+.fav{
+  background-color: rgb(213, 211, 211);
+  width: fit-content;
+  padding:5px;
+  margin-bottom: 10px;
+  border-radius: 10px;
 }
 
 .description {
@@ -162,9 +133,10 @@ a:hover {
 .column1 {
   padding-left: 50px;
   padding-top: 120px;
-  width: 220px;
+  max-width: fit-content;
   float: left;
   text-align: center;
+  margin-top: 30px;
 }
 
 .tag {
@@ -189,6 +161,7 @@ a:hover {
   margin-left: 20px;
   width: 480px;
   float: left;
+  text-align: justify;
 }
 
 .avatars {
@@ -198,43 +171,6 @@ a:hover {
 fieldset, label { margin: 0; padding: 0; }
 
 /****** Style Star Rating Widget *****/
-
-.rating {
-  border: none;
-  float: left;
-}
-
-.rating > input { display: none; }
-.rating > label:before {
-  margin: 5px;
-  margin-top: 0;
-  font-size: 1em;
-  font-family: FontAwesome;
-  display: inline-block;
-  content: "\f005";
-}
-
-.rating > .half:before { 
-  content: "\f089";
-  position: absolute;
-}
-
-.rating > label { 
-  color: #ddd; 
- float: right; 
-}
-
-/***** CSS Magic to Highlight Stars on Hover *****/
-
-.rating > input:checked ~ label, /* show gold star when clicked */
-.rating:not(:checked) > label:hover, /* hover current star */
-.rating:not(:checked) > label:hover ~ label { color: #FFD700;  } /* hover previous stars in list */
-
-.rating > input:checked + label:hover, /* hover current star when changing rating */
-.rating > input:checked ~ label:hover,
-.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
-.rating > input:checked ~ label:hover ~ label { color: #FFED85;  } 
-
 
 a[data-tooltip] {
   position: relative;
@@ -294,4 +230,30 @@ a[data-tooltip][data-placement="top"]::after {
   height: 100vh;
   font-size: 24px;
   font-weight: bold;
+}
+
+.title2 {
+  color: white;
+  font-size: 23px;
+  font-weight: 300;
+  margin-top:20px;
+  margin-bottom:10px;
+  background-color: grey;
+  width:fit-content;
+  border-radius: 30px;
+  padding: 10px;
+  /* margin-bottom: 15px; */
+}
+
+section.new_index {
+  background-image: url('./assets/welcome-banner.jpg');
+  height: 300px;
+  color: white;
+  display: flex;
+  align-items: center; /* Memusatkan elemen secara vertikal */
+  justify-content: center; /* Memusatkan elemen secara horizontal */
+}
+
+.carousel-container{
+  margin:80px
 }

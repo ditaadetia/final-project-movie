@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 
 export default function Header({ onSearch }) {
+  const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState(""); // State untuk kata kunci pencarian
   const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjNlYzkxZDM1MTYyZGQ0ZmE5OTY3ODQ1ODIwMTJmZCIsInN1YiI6IjYxZmI0ZGVmNDE0MjkxMDBhMjE3MmM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GPyOocPqIdDWplpMcoOBL7h3htPH6STZhNZn0tFfuDc';
 
@@ -26,6 +28,7 @@ export default function Header({ onSearch }) {
     .then((data) => {
         setLoading(false);
         onSearch(data.results);
+        navigate('/');
     })
     .catch((error) => {
         setLoading(false);

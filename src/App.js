@@ -5,12 +5,14 @@ import Body from './Body';
 import MovieDetail from './MovieDetail';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import CircularProgress from '@mui/material/CircularProgress';
+
 
 import 'tailwindcss/tailwind.css';
 
 function App() {
   const [loading, setLoading] = useState(true);
-  const [movies, setMovies] = useState([]);
+  const [apiMovies, setApiMovies] = useState([]); // State baru untuk data dari API
   const [page, setPage] = useState(1);
   const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjNlYzkxZDM1MTYyZGQ0ZmE5OTY3ODQ1ODIwMTJmZCIsInN1YiI6IjYxZmI0ZGVmNDE0MjkxMDBhMjE3MmM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GPyOocPqIdDWplpMcoOBL7h3htPH6STZhNZn0tFfuDc';
   const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
@@ -48,7 +50,8 @@ function App() {
     .then(response => response.json())
     .then(data => {
       if (data.results.length > 0) {
-        setMovies(prevMovies => [...prevMovies, ...data.results]);
+        // Saat data berhasil diambil, gunakan setApiMovies untuk menggantikan data dari API
+        setApiMovies(prevMovies => [...prevMovies, ...data.results]);
         setLoading(false);
       } else {
         window.removeEventListener('scroll', handleScroll);
@@ -69,25 +72,26 @@ function App() {
     return () => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, []); // Empty dependency array to run only once
+  }, []);
 
   const handleSearch = (searchResults) => {
-    setMovies(searchResults);
+    // Saat melakukan pencarian, setApiMovies untuk menggantikan data dari API
+    setApiMovies(searchResults);
   };
 
   return (
     <>
-      <Header onSearch={handleSearch} />
       <Router>
+      <Header  onSearch={handleSearch} />
         <Routes className="body">
           <Route path="/" element={
             <InfiniteScroll
-              dataLength={movies.length}
+              dataLength={apiMovies.length}
               next={() => fetchMovies(page + 1)}
               hasMore={!loading}
-              loader={<h4>Loading...</h4>}
+              loader={<div className='loading-indicator'><CircularProgress color="primary" size={50} /></div>}
             >
-              <Body movies={movies} loading={loading} />
+              <Body movies={apiMovies} loading={loading} />
             </InfiniteScroll>
           } />
           <Route path="/movie/:id" element={<MovieDetail />} />

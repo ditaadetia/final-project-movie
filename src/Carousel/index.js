@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import '../App.css';
 
 export default function MovieCarousel() {
   const [popularMovies, setPopularMovies] = useState([]);
@@ -41,30 +42,30 @@ export default function MovieCarousel() {
 
   return (
     <div className="carousel-container">
-      <h2>Popular Movies</h2>
-      <div className="carousel w-6/12">
-        <Carousel
-          showArrows={true}
-          infiniteLoop={true}
-          showStatus={false}
-          dynamicHeight={true}
-          emulateTouch={true}
-          interval={5000}
-          showThumbs={2} // Menentukan jumlah card yang akan ditampilkan dalam satu frame (slide)
-        >
-          {popularMovies.map((movie) => (
-            <div key={movie.id} className="carousel-item">
-              <img
-                src={`https://image.tmdb.org/t/p/w500/${movie.poster_path}`}
-                alt={movie.title}
-                // style={{ width:'30%' }}
-              />
-              <h3>{movie.title}</h3>
-              <p>{movie.overview}</p>
-            </div>
-          ))}
-        </Carousel>
-      </div>
+        <p className='title2'>Popular Movies</p>
+        <div className="carousel">
+            <Carousel
+            showArrows={true}
+            infiniteLoop={true}
+            showStatus={false}
+            dynamicHeight={true}
+            emulateTouch={true}
+            interval={1000}
+            showThumbs={2}
+            autoPlay={true}
+            >
+            {popularMovies.map((movie) => (
+                <div key={movie.id} className="carousel-item">
+                    <img
+                        src={`https://image.tmdb.org/t/p/w500/${movie.backdrop_path}`}
+                        alt={movie.title}
+                    />
+                    <h3>{movie.title}</h3>
+                    <p>{movie.overview}</p>
+                </div>
+            ))}
+            </Carousel>
+        </div>
     </div>
   );
 }
