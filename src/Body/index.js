@@ -95,12 +95,11 @@ export default function Body({ movies, loading }) {
                                 {movie.release_date}
                                 </p>
                                 <p className="text-xs">
-                                {movie.overview.slice(0, 100)}...
+                                {movie.overview.slice(0, 40)}...
                                 <span
                                     className="text-blue-500 cursor-pointer"
                                     onClick={() => handleReadMoreClick(movie.id)}
                                 >
-                                    Read More
                                 </span>
                                 </p>
                             </div>

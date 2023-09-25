@@ -257,3 +257,10 @@ section.new_index {
 .carousel-container{
   margin:80px
 }
+
+.title1 {
+  color: white;
+  font-size: 44px;
+  margin-bottom: 13px;
+  position: relative;
+}
