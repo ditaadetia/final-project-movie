@@ -16,7 +16,6 @@ export default function MovieCarousel({ id }) {
     const queryParams = new URLSearchParams({
       language: 'en-US',
       page: 1,
-      adult: false,
     });
     const fetchPopularMovies = async () => {
       try {
