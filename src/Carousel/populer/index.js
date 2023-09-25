@@ -5,17 +5,17 @@ import '../../App.css';
 import imageNotFound from '../../assets/image-not-found.png';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function MovieCarousel() {
+export default function MovieCarousel({id}) {
   const [popularMovies, setPopularMovies] = useState([]);
   const [loading, setLoading] = useState(true);
-  const bearerToken =
-    'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjNlYzkxZDM1MTYyZGQ0ZmE5OTUyZDZlODIwMTJmZCIsInN1YiI6IjYxZmI0ZGVmNDE0MjkxMDBhMjE3MmM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GPyOocPqIdDWplpMcoOBL7h3htPH6STZhNZn0tFfuDc';
+  const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjNlYzkxZDM1MTYyZGQ0ZmE5OTY3ODQ1ODIwMTJmZCIsInN1YiI6IjYxZmI0ZGVmNDE0MjkxMDBhMjE3MmM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GPyOocPqIdDWplpMcoOBL7h3htPH6STZhNZn0tFfuDc';
 
   useEffect(() => {
     const apiUrl = 'https://api.themoviedb.org/3/movie/popular';
     const queryParams = new URLSearchParams({
       language: 'en-US',
       page: 1,
+      adult: false
     });
     const fetchPopularMovies = async () => {
       try {
@@ -47,16 +47,15 @@ export default function MovieCarousel() {
 
   return (
     <div className="carousel-container">
-      {/* Tampilkan CircularProgress selama loading */}
       {loading ? (
         <div className="loading-indicator">
           <CircularProgress />
         </div>
       ) : (
         <>
-          <p className='title2'>Populer Movies</p>
+          <p className='title2'>Popular Movies</p>
           <div className="carousel">
-            <Carousel
+              <Carousel
               showArrows={true}
               infiniteLoop={true}
               showStatus={false}
@@ -65,22 +64,22 @@ export default function MovieCarousel() {
               interval={1000}
               showThumbs={2}
               autoPlay={true}
-            >
+              >
               {popularMovies.map((movie) => (
-                <div key={movie.id} className="carousel-item">
-                  <img
-                    src={
-                      movie.backdrop_path != null
-                        ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
-                        : imageNotFound
-                    }
-                    alt={movie.title}
-                  />
-                  <h3>{movie.title}</h3>
-                  <p>{movie.overview}</p>
-                </div>
+                  <div key={movie.id} className="carousel-item">
+                      <img
+                          src={
+                              movie.backdrop_path != null
+                              ? `https://image.tmdb.org/t/p/original/${movie.backdrop_path}`
+                              : imageNotFound
+                          }
+                          alt={movie.title}
+                      />
+                      <h3>{movie.title}</h3>
+                      <p>{movie.overview}</p>
+                  </div>
               ))}
-            </Carousel>
+              </Carousel>
           </div>
         </>
       )}
