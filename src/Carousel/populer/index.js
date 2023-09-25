@@ -5,7 +5,7 @@ import '../../App.css';
 import imageNotFound from '../../assets/image-not-found.png';
 import CircularProgress from '@mui/material/CircularProgress';
 
-export default function MovieCarousel({id}) {
+export default function MovieCarousel() {
   const [popularMovies, setPopularMovies] = useState([]);
   const [loading, setLoading] = useState(true);
   const bearerToken = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIzMjNlYzkxZDM1MTYyZGQ0ZmE5OTY3ODQ1ODIwMTJmZCIsInN1YiI6IjYxZmI0ZGVmNDE0MjkxMDBhMjE3MmM1OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.GPyOocPqIdDWplpMcoOBL7h3htPH6STZhNZn0tFfuDc';
