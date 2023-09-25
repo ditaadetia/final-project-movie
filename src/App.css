@@ -247,7 +247,7 @@ a[data-tooltip][data-placement="top"]::after {
 
 section.new_index {
   background-image: url('./assets/welcome-banner.jpg');
-  height: 300px;
+  height: 400px;
   color: white;
   display: flex;
   align-items: center; /* Memusatkan elemen secara vertikal */

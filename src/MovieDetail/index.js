@@ -3,7 +3,8 @@ import { useParams } from 'react-router-dom';
 import Chip from '@mui/material/Button';
 import Stack from '@mui/material/Stack';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import Carousel from '../Carousel';
+import SimilarCarousel from '../Carousel/similar';
+import Populer from '../Carousel/populer';
 import MovieDetailSkeleton from './skeleton';
 
 export default function MovieDetail() {
@@ -71,7 +72,8 @@ export default function MovieDetail() {
                     <p>{movie.overview}</p>
                 </div>
                 </div>
-                <Carousel />
+                <SimilarCarousel id={id}/>
+                <Populer/>
             </>
             )}
         </div>
