@@ -43,7 +43,7 @@ export default function MovieCarousel({id}) {
 
     // Panggil fungsi fetchPopularMovies saat komponen dimuat
     fetchPopularMovies();
-  }, []);
+  }, [id]);
 
   return (
     <div className="carousel-container">
